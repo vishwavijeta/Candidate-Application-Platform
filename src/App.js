@@ -84,8 +84,11 @@ function App() {
       the distance from the top of the page to the top of 
       the viewport is less than the height of the entire document, then return
       Also. if the infinite scroll loading is true, then return
+      5 is added to the sum of the height of the browser window and 
+      the distance from the top of the page to the top of the viewport
+      to make the infinite scroll loading to start before reaching the end of the page
     */
-    if (height + scrollTop < offsetHeight && infinteScrollLoading) return;
+    if (height + scrollTop + 5 < offsetHeight || infinteScrollLoading) return;
 
     // increment the offset by 10 and set the infinite scroll loading to true
     setOffset(prevOffset => prevOffset + 10);

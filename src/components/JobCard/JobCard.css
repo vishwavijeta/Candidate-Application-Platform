@@ -1,0 +1,124 @@
+.job-card {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 25px;
+}
+
+.job-container-wrapper {
+    flex-basis: 33.33%;
+    display: flex;
+}
+
+.job-container {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25), 0 0px 5px rgba(0, 0, 0, 0.25), inset 17px 23px 15px 1px rgba(255, 255, 255, 0.1);
+    padding: 12px 24px;
+    border-radius: 10px;
+    margin: 25px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.job-container-header {
+    display: flex;
+    gap: 5px;
+}
+
+.job-company-logo img {
+    width: 50px;
+}
+
+.job-company {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+    color: #8b8b8b;
+}
+
+
+.job-title {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.job-location {
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 5px;
+    text-transform: capitalize;
+}
+
+.job-salary {
+    font-weight: 400;
+    font-size: 14px;
+    color: rgb(77, 89, 106);
+    line-height: 1.43;
+    margin: 8px 0;
+}
+
+.job-description-about {
+    margin: 0px;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 600;
+}
+
+.job-description {
+    white-space: pre-wrap;
+    font-size: 14px;
+}
+
+.job-description-wrapper {
+    height: 250px;
+    overflow: hidden;
+    mask-image: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255), rgba(255, 255, 255, 0));
+}
+
+.job-more-deatils {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    position: relative;
+    top: -20px;
+}
+
+.job-more-deatils a {
+    cursor: pointer;
+    color: #4943da;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.job-apply-wrapper .MuiButton-containedWarning {
+    width: 100%;
+    background-color: rgb(85, 239, 196);
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    padding: 8px 18px;
+    font-family: 'Lexend', sans-serif;
+    text-transform: capitalize;
+}
+
+.job-apply-wrapper {
+    margin-top: 15px;
+}
+
+.job-apply-wrapper .MuiButton-containedWarning:hover {
+    background-color: rgb(85, 239, 196);
+}
+
+.job-experience-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+    color: #8b8b8b;
+    margin-top: 10px;
+}
+
+.job-experience-years {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+}

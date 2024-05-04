@@ -3,13 +3,13 @@ import Button from '@mui/material/Button';
 import { FcFlashOn } from "react-icons/fc";
 import './JobCard.css'
 
-const JobCard = ({jobs}) => {
+const JobCard = ({ jobs }) => {
 
 
     return (
         <div className="job-card">
-            {jobs.map((job) => (
-                <div className='job-container-wrapper' key={job.jdUid}>
+            {jobs.map((job, index) => (
+                <div className='job-container-wrapper' key={index}>
                     <div className='job-container'>
                         <div className='job-container-header'>
                             <div className='job-company-logo'>

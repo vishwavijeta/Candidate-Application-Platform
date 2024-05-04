@@ -5,3 +5,9 @@
   flex-wrap: wrap;
   margin: 25px;
 }
+
+.circular-progress {
+  display: flex;
+  justify-content: center;
+  scale: 1.4;
+}

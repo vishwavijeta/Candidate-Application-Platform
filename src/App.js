@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import JobCard from './components/JobCard/JobCard';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 function App() {
@@ -40,13 +41,14 @@ function App() {
       }
       )
       .catch(error => console.log('error', error));
-
-
   };
 
   return (
     <>
       <JobCard jobs={jobs} />
+      <div className='circular-progress'>
+        <CircularProgress />
+      </div>
     </>
   );
 }

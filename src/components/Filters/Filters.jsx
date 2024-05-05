@@ -2,11 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import './Filters.css';
-
-
-const MinimumBasePay = [0, 20, 30, 40, 50, 60, 70, 80, 90, 100];
-
-const Experience = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+import { Experience, MinimumBasePay } from '../../utils/utils';
 
 
 export default function MultipleSelectChip({ jobs, handleFilter }) {

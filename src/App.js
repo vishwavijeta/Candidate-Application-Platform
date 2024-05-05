@@ -2,15 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import JobCard from './components/JobCard/JobCard';
 import CircularProgress from '@mui/material/CircularProgress';
-import Filters from './components/JobCard/Filters/Filters';
-
-const filters = {
-  'companyName': [],
-  'jobRole': [],
-  'minExp': 0,
-  'minJdSalary': 0,
-  'location': []
-};
+import Filters from './components/Filters/Filters';
+import { filters } from './utils/utils';
 
 function App() {
 

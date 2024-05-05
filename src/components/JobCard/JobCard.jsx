@@ -15,6 +15,17 @@ const JobCard = ({ jobs }) => {
         }));
     };
 
+    function formattingMinMaxData(min, max) {
+        if (min && max) {
+            return `${min}-${max}`;
+        } else if (min) {
+            return `${min}`;
+        } else if (max) {
+            return `${max}`;
+        }
+        return;
+    }
+
     return (
         <div className="job-card">
             {jobs.map((job, index) => (
@@ -30,7 +41,7 @@ const JobCard = ({ jobs }) => {
                                 <div className='job-location'>{job.location}</div>
                             </div>
                         </div>
-                        <div className='job-salary'>Estimated Salary: {job.salaryCurrencyCode}{job.minJdSalary && job.maxJdSalary ? `${job.minJdSalary} - ${job.maxJdSalary}` : job.minJdSalary} LPA<span> ✅</span></div>
+                        <div className='job-salary'>Estimated Salary: {job.salaryCurrencyCode}{formattingMinMaxData(job.minJdSalary, job.maxJdSalary)} LPA<span> ✅</span></div>
                         <div className='job-description-wrapper'>
                             <p className='job-description-about'>About Company:</p>
                             <div className='job-description'>{job.jobDetailsFromCompany}</div>
@@ -40,9 +51,7 @@ const JobCard = ({ jobs }) => {
                         </div>
                         <div className='job-experience'>
                             <div className='job-experience-title'>{job.minExp && job.maxExp && `Minimum Experience`}</div>
-                            <div className='job-experience-years'>{job.minExp && job.maxExp ? `${job.minExp}-${job.maxExp}` :
-                                job.minExp ? `${job.minExp}` :
-                                    job.maxExp && `${job.maxExp}`} years</div>
+                            <div className='job-experience-years'>{formattingMinMaxData(job.minExp, job.maxExp)} years</div>
                         </div>
                         <div className='job-apply-wrapper'>
                             <Button variant="contained" color="warning" size="large" startIcon={<FcFlashOn />}>

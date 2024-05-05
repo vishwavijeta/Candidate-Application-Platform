@@ -74,6 +74,14 @@ export default function MultipleSelectChip({ jobs, handleFilter }) {
         // Filter items based on whether they contain the search term
         const filteredCompanies = companyName.filter(item => item.toLowerCase().includes(searchTermLower));
 
+        // If no items match the search term
+        // then so nothing
+        if (filteredCompanies.length === 0) {
+            const data = { type: 'companyName', data: ['companyName'] };
+            handleFilter(data);
+            return;
+        }
+
         const data = { type: 'companyName', data: filteredCompanies };
         handleFilter(data);
     };

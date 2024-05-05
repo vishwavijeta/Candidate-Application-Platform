@@ -147,7 +147,7 @@ function App() {
       }
 
       // Filter by minExp
-      if (job.minExp < filterCondition.minExp) {
+      if (job.minExp < filterCondition.minExp && job.maxExp < filterCondition.minExp) {
         return false;
       }
 

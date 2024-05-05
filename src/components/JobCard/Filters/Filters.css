@@ -3,4 +3,54 @@
     display: flex;
     gap: 25px;
     flex-wrap: wrap;
+    justify-content: center;
 }
+
+.MuiButtonBase-root {
+    border-radius: 0 !important;
+}
+
+.MuiOutlinedInput-root.MuiInputBase-sizeSmall {
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    min-height: 36px;
+}
+
+.profile-sidebar p {
+    font-size: 13px;
+    margin: 6px 0;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.filter-container .Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: rgb(38, 132, 255) !important;
+}
+
+.MuiAutocomplete-popupIndicator::before {
+    content: '';
+    border-left: 1px solid rgb(204, 204, 204);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: -1px;
+}
+
+.MuiAutocomplete-popupIndicatorOpen::before {
+    content: none !important;
+}
+
+.MuiAutocomplete-popupIndicatorOpen {
+    border-right: 1px solid rgb(204, 204, 204) !important;
+}
+
+.filter-container input {
+    font-size: 12px;
+}
+
+.MuiAutocomplete-option:hover,
+.Mui-focusVisible {
+    background: rgb(222, 236, 255) !important;
+}
+
+/* rgb(38, 132, 255) */

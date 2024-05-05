@@ -1,16 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import { FcFlashOn } from "react-icons/fc";
 import './JobCard.css'
 
 const JobCard = ({ jobs }) => {
+    // State to manage the expanded state for each job
+    const [expandedJobs, setExpandedJobs] = useState({});
 
+    // Function to handle expanding or collapsing a job description
+    const handleShowMoreClick = (index) => {
+        setExpandedJobs(prevState => ({
+            ...prevState,
+            [index]: !prevState[index]
+        }));
+    };
 
     return (
         <div className="job-card">
             {jobs.map((job, index) => (
                 <div className='job-container-wrapper' key={index}>
-                    <div className='job-container'>
+                    <div className={`job-container ${expandedJobs[index] ? 'expand-job-description' : ''}`}>
                         <div className='job-container-header'>
                             <div className='job-company-logo'>
                                 <img src={job.logoUrl} alt='logo' />
@@ -26,8 +35,8 @@ const JobCard = ({ jobs }) => {
                             <p className='job-description-about'>About Company:</p>
                             <div className='job-description'>{job.jobDetailsFromCompany}</div>
                         </div>
-                        <div className='job-more-deatils'>
-                            <a href='#'>Show more</a>
+                        <div className='job-more-details'>
+                            <a onClick={() => handleShowMoreClick(index)}> {expandedJobs[index] ? 'Show less' : 'Show more'}</a>
                         </div>
                         <div className='job-experience'>
                             <div className='job-experience-title'>{job.minExp && job.maxExp && `Minimum Experience`}</div>

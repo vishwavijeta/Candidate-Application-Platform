@@ -74,14 +74,14 @@
     mask-image: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255), rgba(255, 255, 255, 0));
 }
 
-.job-more-deatils {
+.job-more-details {
     text-align: center;
     margin-bottom: 0.5rem;
     position: relative;
     top: -20px;
 }
 
-.job-more-deatils a {
+.job-more-details a {
     cursor: pointer;
     color: #4943da;
     text-decoration: none;
@@ -120,6 +120,15 @@
     font-size: 14px;
     line-height: 1.5;
     font-weight: 400;
+}
+
+.expand-job-description .job-description-wrapper {
+    overflow: scroll;
+    mask-image: none;
+}
+
+.expand-job-description .job-more-details {
+    top: 5px;
 }
 
 @media screen and (max-width: 575px) {

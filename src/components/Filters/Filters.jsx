@@ -12,11 +12,13 @@ export default function MultipleSelectChip({ jobs, handleFilter }) {
     const minExp = Experience;
     const minJdSalary = MinimumBasePay;
     const [companyName, setCompanyName] = useState([]);
+    const [inOfficeLocation, setInOfficeLocation] = useState([]);
 
     useEffect(() => {
         const uniqueJobRoles = new Set(jobRole);
         const uniqueLocations = new Set(location);
         const uniqueCompanyNames = new Set(companyName);
+        let inOfficeLocationArray = [];
 
         jobs.forEach(element => {
             if (element.jobRole) {
@@ -28,6 +30,7 @@ export default function MultipleSelectChip({ jobs, handleFilter }) {
                 } else if (element.location === 'hybrid') {
                     uniqueLocations.add('Hybrid');
                 } else {
+                    inOfficeLocationArray.push(element.location);
                     uniqueLocations.add('In-Office');
                 }
             }
@@ -39,6 +42,7 @@ export default function MultipleSelectChip({ jobs, handleFilter }) {
         setJobRole([...uniqueJobRoles]);
         setLocation([...uniqueLocations]);
         setCompanyName([...uniqueCompanyNames]);
+        setInOfficeLocation(inOfficeLocationArray);
     }, [jobs]);
 
 
@@ -59,6 +63,24 @@ export default function MultipleSelectChip({ jobs, handleFilter }) {
     const handleOnChangeMinJdSalary = (event, value) => {
         console.log(event, value);
         const data = { type: 'minJdSalary', data: value };
+        handleFilter(data);
+    };
+
+    const handleLocationChange = (event, value) => {
+        console.log('Location Change', value);
+
+        console.log('In Office Location', inOfficeLocation);
+        // Define a mapping object for selected options to job locations
+        const locationMap = {
+            'Remote': ['remote'],
+            'Hybrid': ['hybrid'],
+            'In-Office': inOfficeLocation
+        };
+
+        // Map selected options to job locations and flatten the array
+        const requiredLocation = value.flatMap(option => locationMap[option]);
+
+        const data = { type: 'location', data: requiredLocation };
         handleFilter(data);
     };
 
@@ -122,6 +144,7 @@ export default function MultipleSelectChip({ jobs, handleFilter }) {
                 options={location}
                 getOptionLabel={(option) => option}
                 filterSelectedOptions
+                onChange={handleLocationChange}
                 renderInput={(params) => (
                     <TextField
                         {...params}

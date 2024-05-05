@@ -122,3 +122,34 @@
     line-height: 1.5;
     font-weight: 400;
 }
+
+@media screen and (max-width: 575px) {
+    .job-container-wrapper {
+        flex-basis: 100%;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 991px) {
+    .job-container-wrapper {
+        flex-basis: 50%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .job-container {
+        margin: 24px 12px;
+    }
+}
+
+
+@media screen and (min-width: 992px) and (max-width: 1500px) {
+    .job-container-wrapper {
+        flex-basis: 33.33%;
+    }
+}
+
+@media screen and (min-width: 1501px) {
+    .job-container-wrapper {
+        flex-basis: 25%;
+    }
+}

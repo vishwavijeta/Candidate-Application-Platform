@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, memo, useMemo } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import './Filters.css';
 import { Experience, MinimumBasePay } from '../../utils/utils';
 
 
-export default function MultipleSelectChip({ jobs, handleFilter }) {
+const Filters = ({ jobs, handleFilter }) => {
 
     const [jobRole, setJobRole] = useState([]);
     const [location, setLocation] = useState([]);
-    const minExp = Experience;
-    const minJdSalary = MinimumBasePay;
+
+    // Memoize the values of minExp and minJdSalary
+    const minExp = useMemo(() => Experience, []);
+    const minJdSalary = useMemo(() => MinimumBasePay, []);
+
     const [companyName, setCompanyName] = useState([]);
     const [inOfficeLocation, setInOfficeLocation] = useState([]);
 
@@ -171,4 +174,6 @@ export default function MultipleSelectChip({ jobs, handleFilter }) {
                 placeholder='Search Comapny Name' onChange={search} />
         </div>
     );
-}
+};
+
+export default memo(Filters);

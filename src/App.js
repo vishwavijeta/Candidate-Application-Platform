@@ -172,6 +172,14 @@ function App() {
       return true; 
     });
 
+    // If no jobs are found based on the filter conditions
+    // then log the message and set the infinite scroll loading to true
+    if (filteredData.length === 0) {
+      console.log('No jobs found based on the filter conditions');
+      // increment the offset by 10 and set the infinite scroll loading to true
+      setOffset(prevOffset => prevOffset + 10);
+    }
+
     // updating the jobs state with the filtered data
     // that will be displayed on the UI
     setJobs(filteredData);

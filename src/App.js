@@ -169,7 +169,7 @@ function App() {
       }
 
       // Include the job if it passes all filters
-      return true; 
+      return true;
     });
 
     // If no jobs are found based on the filter conditions
@@ -183,6 +183,16 @@ function App() {
     // updating the jobs state with the filtered data
     // that will be displayed on the UI
     setJobs(filteredData);
+  }
+
+  // show Loading when the jobs data is not fetched
+  if (dataToBeFiltered.length !== 0) {
+    return (
+      <div className='loading-data'>
+        <CircularProgress />
+        <div style={{ marginTop: '10px' }}>Please wait while we are fetching the jobs data...</div>
+      </div>
+    );
   }
 
 

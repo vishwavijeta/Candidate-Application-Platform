@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import { FcFlashOn } from "react-icons/fc";
 import './JobCard.css'
+import { CircularProgress } from '@mui/material';
 
 const JobCard = ({ jobs }) => {
     // State to manage the expanded state for each job
@@ -24,6 +25,14 @@ const JobCard = ({ jobs }) => {
             return `${max}`;
         }
         return;
+    }
+
+    if ( jobs.length === 0) {
+        return (
+            <div className="job-card-loading">
+                <CircularProgress />
+            </div>
+        )
     }
 
     return (

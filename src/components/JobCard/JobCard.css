@@ -131,6 +131,13 @@
     top: 5px;
 }
 
+.job-card-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
 @media screen and (max-width: 575px) {
     .job-container-wrapper {
         flex-basis: 100%;

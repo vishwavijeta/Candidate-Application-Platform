@@ -66,6 +66,18 @@ export default function MultipleSelectChip({ jobs, handleFilter }) {
         handleFilter(data);
     };
 
+    const search = (event) => {
+        const searchTerm = event.target.value;
+        // Convert search term to lowercase for case-insensitive search
+        const searchTermLower = searchTerm.toLowerCase();
+
+        // Filter items based on whether they contain the search term
+        const filteredCompanies = companyName.filter(item => item.toLowerCase().includes(searchTermLower));
+
+        const data = { type: 'companyName', data: filteredCompanies };
+        handleFilter(data);
+    };
+
     return (
         <div className='filter-container'>
             <Autocomplete
@@ -83,7 +95,7 @@ export default function MultipleSelectChip({ jobs, handleFilter }) {
                         placeholder="Roles"
                     />
                 )}
-                sx={{ minWidth: '225px' }}
+                sx={{ minWidth: '225px', height: '36px !important' }}
             />
             <Autocomplete
                 size="small"
@@ -129,7 +141,8 @@ export default function MultipleSelectChip({ jobs, handleFilter }) {
                 )}
                 sx={{ width: '250px' }}
             />
-            <TextField id="companyName" size="small" variant="outlined" placeholder='Search Comapny Name' />
+            <TextField id="companyName" size="small" variant="outlined" sx={{ width: '250px' }}
+                placeholder='Search Comapny Name' onChange={search} />
         </div>
     );
 }

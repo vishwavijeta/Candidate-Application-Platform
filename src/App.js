@@ -179,7 +179,7 @@ function App() {
   }
 
   // show Loading when the jobs data is not fetched
-  if (dataToBeFiltered.length !== 0) {
+  if (dataToBeFiltered.length === 0) {
     return (
       <div className='loading-data'>
         <CircularProgress />

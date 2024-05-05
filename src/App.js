@@ -59,7 +59,7 @@ function App() {
     // Request body
     // offset should be incremented by 10 for each request
     const body = JSON.stringify({
-      "limit": 10,
+      "limit": 12,
       "offset": offset,
     });
 
@@ -110,7 +110,7 @@ function App() {
     if (height + scrollTop + 5 < offsetHeight || infinteScrollLoading) return;
 
     // increment the offset by 10 and set the infinite scroll loading to true
-    setOffset(prevOffset => prevOffset + 10);
+    setOffset(prevOffset => prevOffset + 12);
     setInfinteScrollLoading(true);
   };
 
@@ -170,7 +170,7 @@ function App() {
     if (filteredData.length === 0 && dataToBeFiltered.length > 0) {
       console.log('No jobs found based on the filter conditions');
       // increment the offset by 10 and set the infinite scroll loading to true
-      setOffset(prevOffset => prevOffset + 10);
+      setOffset(prevOffset => prevOffset + 12);
     }
 
     // updating the jobs state with the filtered data

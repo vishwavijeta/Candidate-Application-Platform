@@ -41,7 +41,7 @@ const JobCard = ({ jobs }) => {
                                 <div className='job-location'>{job.location}</div>
                             </div>
                         </div>
-                        <div className='job-salary'>Estimated Salary: {job.salaryCurrencyCode}{formattingMinMaxData(job.minJdSalary, job.maxJdSalary)} LPA<span> ✅</span></div>
+                        <div className='job-salary'>Estimated Salary: {job.salaryCurrencyCode} {formattingMinMaxData(job.minJdSalary, job.maxJdSalary)} LPA<span> ✅</span></div>
                         <div className='job-description-wrapper'>
                             <p className='job-description-about'>About Company:</p>
                             <div className='job-description'>{job.jobDetailsFromCompany}</div>
@@ -49,10 +49,12 @@ const JobCard = ({ jobs }) => {
                         <div className='job-more-details'>
                             <a onClick={() => handleShowMoreClick(index)}> {expandedJobs[index] ? 'Show less' : 'Show more'}</a>
                         </div>
-                        <div className='job-experience'>
-                            <div className='job-experience-title'>{job.minExp && job.maxExp && `Minimum Experience`}</div>
-                            <div className='job-experience-years'>{formattingMinMaxData(job.minExp, job.maxExp)} years</div>
-                        </div>
+                        {job.minExp && job.maxExp &&
+                            <div className='job-experience'>
+                                <div className='job-experience-title'>Minimum Experience</div>
+                                <div className='job-experience-years'>{formattingMinMaxData(job.minExp, job.maxExp)} years</div>
+                            </div>
+                        }
                         <div className='job-apply-wrapper'>
                             <Button variant="contained" color="warning" size="large" startIcon={<FcFlashOn />}>
                                 Easy Apply

@@ -96,14 +96,13 @@ export default function MultipleSelectChip({ jobs, handleFilter }) {
                 getOptionLabel={(option) => option}
                 onChange={handleJobRoleChange}
                 filterSelectedOptions
-                placeholder="Roles"
                 renderInput={(params) => (
                     <TextField
                         {...params}
                         placeholder="Roles"
                     />
                 )}
-                sx={{ minWidth: '225px', height: '36px !important' }}
+                sx={{ minWidth: '225px' }}
             />
             <Autocomplete
                 size="small"
@@ -133,7 +132,7 @@ export default function MultipleSelectChip({ jobs, handleFilter }) {
                         placeholder="Remote"
                     />
                 )}
-                sx={{ width: '125px' }}
+                sx={{ minWidth: '125px' }}
             />
             <Autocomplete
                 size="small"
@@ -149,7 +148,7 @@ export default function MultipleSelectChip({ jobs, handleFilter }) {
                 )}
                 sx={{ width: '250px' }}
             />
-            <TextField id="companyName" size="small" variant="outlined" sx={{ width: '250px' }}
+            <TextField id="companyName" size="small" variant="outlined" sx={{ width: '250px', height: '36px' }}
                 placeholder='Search Comapny Name' onChange={search} />
         </div>
     );

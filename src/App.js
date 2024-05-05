@@ -2,12 +2,28 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import JobCard from './components/JobCard/JobCard';
 import CircularProgress from '@mui/material/CircularProgress';
+import Filters from './components/JobCard/Filters/Filters';
 
+const filters = {
+  'companyName': [],
+  'jobRole': [],
+  'minExp': 0,
+  'minJdSalary': 0,
+  'location': []
+};
 
 function App() {
 
   // State to store the jobs data
+  // that will be displayed on the UI
   const [jobs, setJobs] = useState([]);
+
+  // State to store the all the jobs data
+  // coming from the API
+  const [dataToBeFiltered, setDataToBeFiltered] = useState([]);
+
+  // State to store the filters conditions
+  const [filteredConditions, setFilteredConditions] = useState(filters);
 
   // State to store the offset
   const [offset, setOffset] = useState(0);
@@ -33,6 +49,15 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [infinteScrollLoading]);
 
+
+  useEffect(() => {
+    console.log('filtered Conditions', filteredConditions);
+    // calling the filteredJobs function when the filteredConditions are changed
+    filteredJobs(filteredConditions);
+  }, [filteredConditions, dataToBeFiltered]);
+
+
+
   // Function to fetch the jobs data from the API
   const fetchJobsDetails = () => {
     const myHeaders = new Headers();
@@ -56,8 +81,9 @@ function App() {
       .then(response => response.json())
       .then(data => {
         console.log('data coming from the API', data);
-        // Setting the jobs data in the state
-        setJobs(prevJobs => [...prevJobs, ...data.jdList]);
+        // updating the dataToBeFiltered state with the data coming from the API
+        // it has all the jobs data
+        setDataToBeFiltered(prevFiltersData => [...prevFiltersData, ...data.jdList]);
       })
       .catch(error => {
         // Logging the error
@@ -95,8 +121,66 @@ function App() {
     setInfinteScrollLoading(true);
   };
 
+
+  // callback function to handle the filter
+  // called from the Filters component
+  // filter is an object with type and data
+  const handleFilter = (filter) => {
+    console.log('New filter condition coming from the Filters component', filter);
+
+    // replace a block in the filteredConditions with the new filter
+    // for example, if the filter is {type: 'companyName', data: ['Google', 'Microsoft']}
+    setFilteredConditions(prevFilteredConditions => {
+      return {
+        ...prevFilteredConditions,
+        [filter.type]: filter.data
+      }
+    });
+  }
+
+  // Function to filter the jobs data
+  // based on the filters conditions
+  const filteredJobs = (filterCondition) => {
+    // Filtering the data based on the filter conditions
+    const filteredData = dataToBeFiltered.filter(job => {
+      // Filter by companyName
+      if (filterCondition.companyName.length > 0 && !filterCondition.companyName.includes(job.companyName)) {
+        return false;
+      }
+
+      // Filter by jobRole
+      if (filterCondition.jobRole.length > 0 && !filterCondition.jobRole.includes(job.jobRole)) {
+        return false;
+      }
+
+      // Filter by minExp
+      if (job.minExp < filterCondition.minExp) {
+        return false;
+      }
+
+      // Filter by minJdSalary
+      if (job.minJdSalary < filterCondition.minJdSalary) {
+        return false;
+      }
+
+      // Filter by location
+      if (filterCondition.location.length > 0 && !filterCondition.location.includes(job.location)) {
+        return false;
+      }
+
+      // Include the job if it passes all filters
+      return true; 
+    });
+
+    // updating the jobs state with the filtered data
+    // that will be displayed on the UI
+    setJobs(filteredData);
+  }
+
+
   return (
     <>
+      <Filters jobs={dataToBeFiltered} handleFilter={handleFilter} />
       <JobCard jobs={jobs} />
       {infinteScrollLoading &&
         <div className='circular-progress'>

@@ -167,7 +167,7 @@ function App() {
 
     // If no jobs are found based on the filter conditions
     // then log the message and set the infinite scroll loading to true
-    if (filteredData.length === 0) {
+    if (filteredData.length === 0 && dataToBeFiltered.length > 0) {
       console.log('No jobs found based on the filter conditions');
       // increment the offset by 10 and set the infinite scroll loading to true
       setOffset(prevOffset => prevOffset + 10);
